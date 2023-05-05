@@ -8,11 +8,17 @@ class Intro extends Phaser.Scene{
         this.graphics.fillCircle(100, 100, 50);
     }
 }
+class OpenDoor extends Phaser.scene{
+    constructor(){
+        super("OpenDoor");
+    }
+    create(){
+        this.graphics = this.add.graphics();
+    }
+}
 class GetIn extends Phaser.Scene{
-
 }
 class Startup extends Phaser.Scene{
-
 }
 let config = {
     type: Phaser.WEBGL,
