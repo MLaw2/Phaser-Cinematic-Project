@@ -28,7 +28,7 @@ class Intro extends Phaser.Scene{
             this.transitionOut();
             this.time.delayedCall(2000, () =>{
                 this.scene.transition({
-                    target: "OpenDoor",
+                    target: "OpenDoor"
                 })
             })
         })
@@ -50,11 +50,22 @@ class OpenDoor extends Phaser.Scene{
             duration: 3000,
             ease: "quart.out"
         })
+        this.time.delayedCall(3000, () =>{
+            this.scene.transition({
+                target: "GetIn"
+            })
+        })
     }
 }
 class GetIn extends Phaser.Scene{
     constructor(){
         super("GetIn");
+    }
+    preload(){
+        this.load.image("carDoor", "./assets/Cropped enhanced mazda rx7 side profile.png");
+    }
+    create(){
+        this.imageObject = this.add.image(400, 300, 'carDoor');
     }
 }
 class Startup extends Phaser.Scene{
@@ -78,6 +89,6 @@ let config = {
     height: 600,
     backgroundColor: 0x000000,
     // scene: [Intro, OpenDoor, GetIn, Startup, MoveOut, MainMenu]
-    scene: OpenDoor
+    scene: GetIn
 }
 let game = new Phaser.Game(config);
