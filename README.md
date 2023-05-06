@@ -6,6 +6,6 @@
 
 # Assets
 * Custom font for the intro text - Teoran Font\
-Made by me
+Made by me\
 https://fontstruct.com/fontstructions/show/1833685/teoran-font-v1-04
 
