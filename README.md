@@ -3,6 +3,27 @@ For CMPM 120 Game Development Experience
 By: Michael Law
 
 # Cinematic Fulfillments
+### 6 Scenes:
+- Intro
+- Open Door
+- Get in Car
+- Car Starts Up
+- Car Moves Away
+- Splash Screen Rolls In
+### 2 Audio Assets:
+- Car Door Closing
+- Car Startup Sound
+### 3 Image Assets:
+- Mazda RX7 Lineart
+- Mazda RX7 Front Art
+- Mazda RX7 Color Picture
+### 2 Geometric Shapes:
+- 1 rectangle for the white part of the door
+- 1 rectangle for the black part of the door
+### 1 Logotype:
+- Spash Screen Logo "The Car"
+### 1 Multi-line Text
+- Intro text in a custom font
 
 # Assets
 * Custom font for the intro text - Teoran Font  
