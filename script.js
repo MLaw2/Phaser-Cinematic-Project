@@ -8,11 +8,11 @@ class Intro extends Phaser.Scene{
         let logoX = 290;
         let logoY = 200;
         let logoSize = 40;
-        let logo = this.add.text(-250, logoY, 
-            'I Like Cars', 
+        let logo = this.add.text(-250, logoY,
+            'I Like Cars',
             {
             fontFamily: 'Teoran',
-            fontSize: logoSize, 
+            fontSize: logoSize,
             lineSpacing: 10
         });
         logo.setWordWrapWidth(10);
@@ -44,8 +44,17 @@ class OpenDoor extends Phaser.Scene{
     create(){
         this.graphics = this.add.graphics();
         this.graphics.fillStyle(0xffffff, 1);
+        let garage = this.graphics.fillRect(300, 160, 180, 280);
+        this.graphics.fillStyle(0x000000, 1);
         let door = this.graphics.fillRect(300, 160, 180, 280);
-        door.scaleX = 0.1;
+        this.tweens.add({
+            targets: door,
+            scaleX: 0,
+            scaleY: 0,
+            duration: 1000,
+            ease: "linear"
+        })
+        // door.scaleX = 0.1;
     }
 }
 class GetIn extends Phaser.Scene{
