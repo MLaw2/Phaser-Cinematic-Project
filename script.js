@@ -160,16 +160,33 @@ class MainMenu extends Phaser.Scene{
     }
     preload(){
         this.load.image("mazda", "./assets/mazda rx7 color drift.png");
+        this.load.image("logo", "./assets/main logo.png");
     }
     create(){
         let wallpaper = this.add.rectangle(400, 300, 800, 600, 0xADD8E6);
         let mazda = this.add.image(1400, 400, "mazda");
         mazda.setDisplaySize(1601/3, 798/3);
+        let logo = this.add.image(1000, 150, "logo");
+        let actionText = this.add.text(1000, 200, "Vroom Vroom.");
+        actionText.setFontSize(32);
+        actionText.setFontStyle('bold');
+        this.tweens.add({
+            targets: actionText,
+            x: 530,
+            duration: 1000,
+            ease: "quart.out"
+        })
+        this.tweens.add({
+            targets: logo,
+            x: 600,
+            duration: 1000,
+            ease: "quart.out"
+        })
         this.tweens.add({
             targets: mazda, 
             x: 300,
             duration: 1500,
-            ease: "quart.out",
+            ease: "quart.out"
         })
 
     }
@@ -179,8 +196,7 @@ let config = {
     width: 800,
     height: 600,
     backgroundColor: 0x000000,
-    scene: [Intro, OpenDoor, GetIn, Startup, MoveOut, MainMenu]
-    // scene: [Startup, MoveOut, MainMenu]
-    // scene: MainMenu
+    // scene: [Intro, OpenDoor, GetIn, Startup, MoveOut, MainMenu]
+    scene: MainMenu
 }
 let game = new Phaser.Game(config);
