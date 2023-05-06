@@ -196,7 +196,6 @@ let config = {
     width: 800,
     height: 600,
     backgroundColor: 0x000000,
-    // scene: [Intro, OpenDoor, GetIn, Startup, MoveOut, MainMenu]
-    scene: MainMenu
+    scene: [Intro, OpenDoor, GetIn, Startup, MoveOut, MainMenu]
 }
 let game = new Phaser.Game(config);
