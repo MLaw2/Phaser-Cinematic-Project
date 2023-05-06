@@ -92,7 +92,6 @@ class Startup extends Phaser.Scene{
     preload(){
         this.load.image("carFront", "./assets/mazda rx7 front.png");
         this.load.audio("carStart", "./assets/rotary loud startup and revs.mp3");
-        console.log("preload done");
     }
     create(){
         let carFront = this.add.image(400,300,'carFront');
@@ -117,7 +116,7 @@ class Startup extends Phaser.Scene{
             })
         })
 
-        this.time.delayedCall(10000, () =>{
+        this.time.delayedCall(5000, () =>{
             this.scene.transition({
                 target: "MoveOut"
             })
@@ -128,10 +127,51 @@ class MoveOut extends Phaser.Scene{
     constructor(){
         super("MoveOut");
     }
+    preload(){
+        this.load.image("carSide", "./assets/Cropped enhanced mazda rx7 side profile with no rear wheel.png");
+        this.load.image("carWheel", "./assets/rear rx7 tire.png");
+    }
+    create(){
+        let carSide = this.add.image(0, 300, "carSide");
+        let carWheel = this.add.image(485, 418, "carWheel");
+        this.tweens.add({
+            targets: carWheel,
+            x: -150,
+            duration: 2000,
+            ease: "Quad.in",
+        })
+        this.tweens.add({
+            targets: carSide,
+            x: -1000,
+            duration: 2510,
+            ease: "Quad.in"
+        })
+
+        this.time.delayedCall(3000, () =>{
+            this.scene.transition({
+                target: "MainMenu"
+            })
+        })
+    }
 }
 class MainMenu extends Phaser.Scene{
     constructor(){
         super("MainMenu");
+    }
+    preload(){
+        this.load.image("mazda", "./assets/mazda rx7 color drift.png");
+    }
+    create(){
+        let wallpaper = this.add.rectangle(400, 300, 800, 600, 0xADD8E6);
+        let mazda = this.add.image(1400, 400, "mazda");
+        mazda.setDisplaySize(1601/3, 798/3);
+        this.tweens.add({
+            targets: mazda, 
+            x: 300,
+            duration: 1500,
+            ease: "quart.out",
+        })
+
     }
 }
 let config = {
@@ -139,7 +179,8 @@ let config = {
     width: 800,
     height: 600,
     backgroundColor: 0x000000,
-    // scene: [Intro, OpenDoor, GetIn, Startup, MoveOut, MainMenu]
-    scene: [Startup, MoveOut, MainMenu]
+    scene: [Intro, OpenDoor, GetIn, Startup, MoveOut, MainMenu]
+    // scene: [Startup, MoveOut, MainMenu]
+    // scene: MainMenu
 }
 let game = new Phaser.Game(config);
