@@ -42,19 +42,14 @@ class OpenDoor extends Phaser.Scene{
         super("OpenDoor");
     }
     create(){
-        this.graphics = this.add.graphics();
-        this.graphics.fillStyle(0xffffff, 1);
-        let garage = this.graphics.fillRect(300, 160, 180, 280);
-        this.graphics.fillStyle(0x000000, 1);
-        let door = this.graphics.fillRect(300, 160, 180, 280);
+        let garage = this.add.rectangle(400, 250, 180, 280, 0xffffff);
+        let door = this.add.rectangle(400, 250, 180, 280, 0x000000);
         this.tweens.add({
             targets: door,
-            scaleX: 0,
-            scaleY: 0,
-            duration: 1000,
-            ease: "linear"
+            x: 580,
+            duration: 3000,
+            ease: "quart.out"
         })
-        // door.scaleX = 0.1;
     }
 }
 class GetIn extends Phaser.Scene{
