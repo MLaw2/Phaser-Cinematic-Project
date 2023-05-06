@@ -8,30 +8,33 @@ class Intro extends Phaser.Scene{
         let logoX = 290;
         let logoY = 200;
         let logoSize = 40;
-        let logoSpacing = 50;
-        let logo1 = this.add.text(logoX, logoY, 'I', {
+        let logo = this.add.text(-250, logoY, 
+            'I Like Cars', 
+            {
             fontFamily: 'Teoran',
-            fontSize: logoSize 
+            fontSize: logoSize, 
+            lineSpacing: 10
         });
-        let logo2 = this.add.text(logoX, logoY+logoSpacing, 'Like', {
-            fontFamily: 'Teoran',
-            fontSize: logoSize 
+        logo.setWordWrapWidth(10);
+        this.tweens.add({
+            targets: logo,
+            x: logoX,
+            duration: 2000,
+            hold: 500,
+            ease: 'quart.out'
         });
-        let logo3 = this.add.text(logoX, logoY+ (logoSpacing*2), 'Cars', {
-            fontFamily: 'Teoran',
-            fontSize: logoSize
-        });
-        // this.tweens.add()
+
         this.time.delayedCall(3000, () =>{
-            this.scene.transition({
-                target: "OpenDoor",
-                duration: 500,
-                onUpdate: this.transitionOut,
+            this.transitionOut();
+            this.time.delayedCall(2000, () =>{
+                this.scene.transition({
+                    target: "OpenDoor",
+                })
             })
         })
     }
     transitionOut(){
-        ;
+        this.cameras.main.fadeOut(1000,0,0,0);
     }
 }
 class OpenDoor extends Phaser.Scene{
@@ -41,7 +44,8 @@ class OpenDoor extends Phaser.Scene{
     create(){
         this.graphics = this.add.graphics();
         this.graphics.fillStyle(0xffffff, 1);
-        this.graphics.fillRect(0, 0, 100, 100);
+        let door = this.graphics.fillRect(300, 160, 180, 280);
+        door.scaleX = 0.1;
     }
 }
 class GetIn extends Phaser.Scene{
@@ -69,6 +73,7 @@ let config = {
     width: 800,
     height: 600,
     backgroundColor: 0x000000,
-    scene: [Intro, OpenDoor, GetIn, Startup, MoveOut, MainMenu]
+    // scene: [Intro, OpenDoor, GetIn, Startup, MoveOut, MainMenu]
+    scene: OpenDoor
 }
 let game = new Phaser.Game(config);
